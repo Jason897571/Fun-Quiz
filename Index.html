@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
-    
+    <header>
+        <div class="header_container">
+            <div class="high_score">
+                <a href="#">
+                    <p>View High Scores</p>
+                </a>
+            </div>
+
+            <div class="timer">
+                <p>Time:<span id="timer">0</span></p>
+                
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="main_container">
+            <h1>Coding Quiz Challenge</h1>
+            <h3>Try to answer the following code-related questions within the time limit.</h3>
+            <h3>Keep in mind that incorrect answers will penalize your score/time</h3>
+            <h3>by ten seconds!</h3>
+
+            <div class="start_btn">
+                <button onclick="window.location.href='./quiz.html'" id="start_btn">Start Quiz</button>
+            </div>
+        </div>
+    </main>
+
+
 </body>
 </html>
