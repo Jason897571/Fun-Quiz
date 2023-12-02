@@ -1,4 +1,5 @@
-[
+{ 
+  "multiple_question":[
     {
       "question": "What is the purpose of the 'alt' attribute in the HTML 'img' tag?",
       "options": ["Define alternative text for an image", "Align the image", "Set the image source", "Change the image size"],
@@ -93,6 +94,57 @@
       "question": "In JavaScript, what is the purpose of the 'localStorage' object?",
       "options": ["Store data locally in the user's browser", "Access server-side data", "Define global variables", "Perform mathematical operations"],
       "correctAnswer": "Store data locally in the user's browser"
+    },
+    {
+      "question": "What does HTML stand for?",
+      "options": ["Hyper Text Markup Language", "Highly Typed Modeling Language", "Hyperlink and Text Markup Language", "High Tech Modern Language"],
+      "correctAnswer": "Hyper Text Markup Language"
+    },
+    {
+      "question": "In CSS, what property is used to change the color of text?",
+      "options": ["color", "text-color", "font-color", "text-style"],
+      "correctAnswer": "color"
+    },
+    {
+      "question": "What does the JavaScript 'document.getElementById()' function do?",
+      "options": ["Returns the HTML content of an element", "Sets the value of an input element", "Finds an HTML element with a specified ID", "Creates a new HTML element"],
+      "correctAnswer": "Finds an HTML element with a specified ID"
+    },
+    {
+      "question": "Which HTML tag is used to create an ordered list?",
+      "options": ["<ul>", "<li>", "<ol>", "<dl>"],
+      "correctAnswer": "<ol>"
+    },
+    {
+      "question": "What is the purpose of the CSS 'margin' property?",
+      "options": ["Set the outer spacing around an element", "Define the font size of an element", "Change the text color", "Control the visibility of an element"],
+      "correctAnswer": "Set the outer spacing around an element"
+    },
+    {
+      "question": "In JavaScript, what does the 'var' keyword do?",
+      "options": ["Declare a variable", "Create a loop", "Define a function", "Perform arithmetic operations"],
+      "correctAnswer": "Declare a variable"
+    },
+    {
+      "question": "Which HTML tag is used to create a hyperlink?",
+      "options": ["<a>", "<link>", "<href>", "<url>"],
+      "correctAnswer": "<a>"
+    },
+    {
+      "question": "What does the CSS 'position: relative' property do?",
+      "options": ["Align the element to the left", "Make the element invisible", "Position the element relative to its normal position", "Float the element to the right"],
+      "correctAnswer": "Position the element relative to its normal position"
+    },
+    {
+      "question": "In JavaScript, what is the purpose of the 'if...else' statement?",
+      "options": ["Declare a function", "Create a loop", "Perform conditional execution", "Define a variable"],
+      "correctAnswer": "Perform conditional execution"
+    },
+    {
+      "question": "Which CSS property is used to set the background color of an element?",
+      "options": ["bgcolor", "background-color", "color-background", "element-color"],
+      "correctAnswer": "background-color"
     }
   ]
-  
+}
+    
