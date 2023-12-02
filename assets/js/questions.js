@@ -24,55 +24,58 @@ var get_json_data = function(){
 
     fetch(quesiton_json_url)
     .then(response => response.json())
-    .then(data => {
+    .then(data => {        
+        // Use the data from the JSON file
+        localStorage.setItem("question_data", JSON.stringify(data));
 
-        if(localStorage.getItem("question_data") == null){
-            // Use the data from the JSON file
-            localStorage.setItem("question_data", JSON.stringify(data));
-            
-        }else{
-            return false;
-        }
     })
 }
 
 
-var display_question = function(){
+var display_question =function(){
+
     var questions_data = localStorage.getItem("question_data");
     questions_data = JSON.parse(questions_data);
-
     var single_question = questions_data["multiple_question"][question_index]
     var question_text = single_question["question"];
     var options = single_question["options"];
     var correct_answer = single_question["correctAnswer"];
-    
-    
+
+
     create_question(question_text, options, correct_answer);
 
     question_options_holder.addEventListener("click", function handle_option_click(event){
-        question_options_holder.removeEventListener("click", handle_option_click);
+        
 
         if(event.target.textContent == correct_answer){
-            console.log("correct answer")}
+            console.log("correct answer")
+            
+        }
         else{
             console.log("wrong answer")
+            
         }
+
+        question_options_holder.removeEventListener("click", handle_option_click);
+        question_index ++;
+
+        if(question_index < questions_data["multiple_question"].length){
+            display_question();
+
+        }
+        else{
+            console.log("end of questions")
+        }
+
     })
-
-    question_index ++;
-
-    if(question_index < questions_data["multiple_question"].length){
-        display_question();
-
-    }
-    else{
-        console.log("end of questions")
-    }
-    
 
 }
 
-get_json_data();
+
+/* check if local storage has questions data */
+if(localStorage.getItem("question_data") == null){
+    get_json_data();
+}
 
 
 display_question()
