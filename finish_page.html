@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header_container">
+            <div class="high_score">
+                <a href="#">
+                    <p>View High Scores</p>
+                </a>
+            </div>
+
+            <div class="timer">
+                <p>Time:<span id="timer_number">1:00</span></p>
+                
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <h1>All Done!</h1>
+        <h2>Your Score is: <span id="total_score"></span></h2>
+        <form action="POST">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials" name="initials" placeholder="initials">
+            <input type="submit" id="submit" value="Submit">
+        </form>
+    </main>
+</body>
+</html>
