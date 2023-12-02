@@ -1,0 +1,98 @@
+[
+    {
+      "question": "What is the purpose of the 'alt' attribute in the HTML 'img' tag?",
+      "options": ["Define alternative text for an image", "Align the image", "Set the image source", "Change the image size"],
+      "correctAnswer": "Define alternative text for an image"
+    },
+    {
+      "question": "In CSS, what does the 'margin' property control?",
+      "options": ["Text spacing", "Border size", "Outer spacing around an element", "Inner spacing within an element"],
+      "correctAnswer": "Outer spacing around an element"
+    },
+    {
+      "question": "What does the 'NaN' value represent in JavaScript?",
+      "options": ["Not a Number", "Negative And Null", "No Assignment", "Newly Assigned Number"],
+      "correctAnswer": "Not a Number"
+    },
+    {
+      "question": "Which HTML tag is used to create an unordered list?",
+      "options": ["<ol>", "<li>", "<ul>", "<dl>"],
+      "correctAnswer": "<ul>"
+    },
+    {
+      "question": "What is the purpose of the CSS 'box-sizing' property?",
+      "options": ["Adjust the size of the element's content box", "Define the element's display type", "Set the element's border color", "Control the element's visibility"],
+      "correctAnswer": "Adjust the size of the element's content box"
+    },
+    {
+      "question": "In JavaScript, what is the 'typeof' operator used for?",
+      "options": ["Check the type of a variable", "Create a new variable", "Concatenate strings", "Perform arithmetic operations"],
+      "correctAnswer": "Check the type of a variable"
+    },
+    {
+      "question": "Which HTML tag is used to create a hyperlink?",
+      "options": ["<a>", "<link>", "<href>", "<url>"],
+      "correctAnswer": "<a>"
+    },
+    {
+      "question": "What does the CSS 'position: absolute' property do?",
+      "options": ["Align the element to the left", "Make the element invisible", "Position the element relative to its nearest positioned ancestor", "Float the element to the right"],
+      "correctAnswer": "Position the element relative to its nearest positioned ancestor"
+    },
+    {
+      "question": "In JavaScript, what is the purpose of the 'for...in' loop?",
+      "options": ["Iterate over the properties of an object", "Create an infinite loop", "Iterate over the items of an array", "Perform a conditional loop"],
+      "correctAnswer": "Iterate over the properties of an object"
+    },
+    {
+      "question": "Which CSS property is used to set the background color of an element?",
+      "options": ["bgcolor", "background-color", "color-background", "element-color"],
+      "correctAnswer": "background-color"
+    },
+    {
+      "question": "What does the HTML acronym 'DOCTYPE' stand for?",
+      "options": ["Document Type", "Document Text", "Declaration of Type", "Document Template"],
+      "correctAnswer": "Document Type"
+    },
+    {
+      "question": "In CSS, what is the 'float' property used for?",
+      "options": ["Change the font size", "Align text to the right", "Create a floating element", "Set the margin size"],
+      "correctAnswer": "Create a floating element"
+    },
+    {
+      "question": "What is the purpose of the JavaScript 'addEventListener' method?",
+      "options": ["Change the document title", "Attach an event handler to an element", "Create a new element", "Define a variable"],
+      "correctAnswer": "Attach an event handler to an element"
+    },
+    {
+      "question": "Which HTML tag is used to define the structure of an HTML document?",
+      "options": ["<head>", "<body>", "<structure>", "<html>"],
+      "correctAnswer": "<html>"
+    },
+    {
+      "question": "What does the CSS 'z-index' property control?",
+      "options": ["Text alignment", "Layering of positioned elements", "Font size", "Margin size"],
+      "correctAnswer": "Layering of positioned elements"
+    },
+    {
+      "question": "In JavaScript, what is the purpose of the 'parseInt' function?",
+      "options": ["Convert a string to an integer", "Create a new variable", "Round a floating-point number", "Check if a value is not a number"],
+      "correctAnswer": "Convert a string to an integer"
+    },
+    {
+      "question": "Which HTML tag is used to create a table?",
+      "options": ["<table>", "<tr>", "<td>", "<th>"],
+      "correctAnswer": "<table>"
+    },
+    {
+      "question": "What does the CSS 'opacity' property control?",
+      "options": ["Element visibility", "Text color", "Background color", "Element size"],
+      "correctAnswer": "Element visibility"
+    },
+    {
+      "question": "In JavaScript, what is the purpose of the 'localStorage' object?",
+      "options": ["Store data locally in the user's browser", "Access server-side data", "Define global variables", "Perform mathematical operations"],
+      "correctAnswer": "Store data locally in the user's browser"
+    }
+  ]
+  
