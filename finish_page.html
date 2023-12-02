@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
     <header>
@@ -24,18 +23,13 @@
     </header>
 
     <main>
-        <div class="main_container">
-            <h1>Coding Quiz Challenge</h1>
-            <h3>Try to answer the following code-related questions within the time limit.</h3>
-            <h3>Keep in mind that incorrect answers will penalize your score/time</h3>
-            <h3>by ten seconds!</h3>
-
-            <div class="start_btn">
-                <button onclick="window.location.href='./quiz.html'" id="start_btn">Start Quiz</button>
-            </div>
-        </div>
+        <h1>All Done!</h1>
+        <h2>Your Score is: <span id="total_score"></span></h2>
+        <form action="POST">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials" name="initials" placeholder="initials">
+            <input type="submit" id="submit" value="Submit">
+        </form>
     </main>
-
-
 </body>
 </html>
