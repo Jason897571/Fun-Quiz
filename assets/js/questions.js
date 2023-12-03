@@ -1,12 +1,43 @@
-let questions_text = document.querySelector(".question_text")
-let option_1 = document.querySelector(".option_1")
-let option_2 = document.querySelector(".option_2")
-let option_3 = document.querySelector(".option_3")
-let option_4 = document.querySelector(".option_4")
-let question_options_holder = document.querySelector(".question_options_holder")
-var question_index = 1;
+let questions_text = document.querySelector(".question_text");
+let option_1 = document.querySelector(".option_1");
+let option_2 = document.querySelector(".option_2");
+let option_3 = document.querySelector(".option_3");
+let option_4 = document.querySelector(".option_4");
+let time_element = document.getElementById("timer_number");
+let right_number_element = document.querySelector("#correct");
+let wrong_number_element = document.querySelector("#wrong");
+let question_options_holder = document.querySelector(".question_options_holder");
+let score_element = document.querySelector("#total_score");
+let result_element = document.querySelector("#result");
+var question_index = 0;
+var right_number = 0;
+var wrong_number = 0;
+var score = 0;
+var time_left = 100;
 
-function create_question(question_text,options,correct_option) {
+
+// timer
+function start_timer(){
+    var timer = setInterval(function(){
+
+        time_element.innerHTML = time_left;
+
+        time_left--;
+        
+        if(time_left < 0){
+            clearInterval(timer);
+            jump_to_finish_page();
+        }
+    }, 1000);
+}
+
+
+
+function jump_to_finish_page(){
+    window.location.href = "finish_page.html";
+}
+
+function create_question(question_text,options) {
     /* assign value to question text */
     questions_text.textContent = question_text;
 
@@ -34,7 +65,7 @@ var get_json_data = function(){
 
 var display_question =function(){
 
-    var questions_data = localStorage.getItem("question_data");
+    let questions_data = localStorage.getItem("question_data");
     questions_data = JSON.parse(questions_data);
     var single_question = questions_data["multiple_question"][question_index]
     var question_text = single_question["question"];
@@ -49,14 +80,45 @@ var display_question =function(){
 
         if(event.target.textContent == correct_answer){
             console.log("correct answer")
+
+            // update accumulated number of corrected questions
+            right_number ++;
+            right_number_element.textContent = right_number;
+            
+            //update total score
+            score =  right_number * 10;
+            score_element.textContent = score;
+
+            // show result
+            result_element.textContent = " Correct!";
+            result_element.style.color = "green";
+            
             
         }
         else{
             console.log("wrong answer")
+            wrong_number ++;
+            wrong_number_element.textContent = wrong_number;
+
+            // show result
+            result_element.textContent = " Wrong!";
+            result_element.style.color = "red";
+
+            // decrease the time due to wrong answer
+            if(time_left > 5){
+                time_left -= 5;
+            }
+            else{
+                time_left = 0;
+                console.log("end of questions")
+
+            }
+
             
         }
-
+        // remove the eventlistener since there will be another eventlisten to be added to the next question
         question_options_holder.removeEventListener("click", handle_option_click);
+
         question_index ++;
 
         if(question_index < questions_data["multiple_question"].length){
@@ -71,6 +133,7 @@ var display_question =function(){
 
 }
 
+start_timer()
 
 /* check if local storage has questions data */
 if(localStorage.getItem("question_data") == null){

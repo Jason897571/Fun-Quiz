@@ -25,7 +25,7 @@
 
     <main>
         <div class="questions_container">
-            <!-- TODO need to create question by js  -->
+            
             <div class="question_holder">
                 <h1 class="question_text"></h1>
                 <ul class="question_options_holder">
@@ -37,7 +37,7 @@
 
             </div>
             <div class="current_result">
-                <p>Your Result:<span id="result"></span></p>
+                <p>Your Result of previous question is:<span id="result"></span></p>
             </div>
         </div>
         
@@ -45,13 +45,12 @@
 
     <footer>
         <div class="accumulated_score_container">
-            <p>Correct Answer Number &#9989;:<span id="correct"></span></p>
-            <p>Wrong Answer Number &#x274C;:<span id="wrong"></span></p>
-            <p>Total Scores:<span id="total_score">200</span></p>
+            <p>Correct Answer Number &#9989;:<span id="correct">0</span></p>
+            <p>Wrong Answer Number &#x274C;:<span id="wrong">0</span></p>
+            <p>Total Scores:<span id="total_score">0</span></p>
         </div>
     </footer>
 
-    <script src="./assets/js/clock.js"></script>
     <script src="./assets/js/questions.js"></script>
 </body>
 </html>
