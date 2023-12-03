@@ -17,7 +17,7 @@
             </div>
 
             <div class="timer">
-                <p>Time:<span id="timer_number"></span></p>
+                <p>Time Left: <span id="timer_number">100</span></p>
                 
             </div>
         </div>
@@ -70,17 +70,26 @@
     </div>
   
     <!-- finish page, result and initial -->
-    <main class="finish_page hidden">
+    <main class="result_page hidden">
         <h1>All Done!</h1>
         <h2>Your Score is: <span id="total_score"></span></h2>
-        <form action="POST">
+        <form>
             <label for="initials">Enter your initials:</label>
-            <input type="text" id="initials" name="initials" placeholder="initials">
+            <input type="text" id="initials" placeholder="initials">
             <input type="submit" id="submit" value="Submit">
         </form>
     </main>
 
+    <main class="score_page hidden">
+        <h1>High Scores</h1>
+        <ul class="score_list visible"></ul>
 
+        <form>
+            <input type="button" id="go_back" value="Go Back">
+            <input type="button" id="clear" value="Clear high scores">
+        </form>
+
+    </main>
 
         
 

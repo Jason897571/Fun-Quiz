@@ -7,25 +7,30 @@ let option_1 = document.querySelector(".option_1");
 let option_2 = document.querySelector(".option_2");
 let option_3 = document.querySelector(".option_3");
 let option_4 = document.querySelector(".option_4");
-
-
 let time_element = document.getElementById("timer_number");
 let right_number_element = document.querySelector("#correct");
 let wrong_number_element = document.querySelector("#wrong");
 let question_options_holder = document.querySelector(".question_options_holder");
 let score_element = document.querySelector("#total_score");
 let result_element = document.querySelector("#result");
+let submit_btn = document.querySelector("#submit");
+let initials_holder = document.querySelector("#initials");
+let score_list = document.querySelector(".score_list");
+let score_page_block = document.querySelector(".score_page");
+let go_back_btn = document.querySelector("#go_back");
+let clear_btn = document.querySelector("#clear");
+const time_penality = 10;
 var question_index = 0;
 var right_number = 0;
 var wrong_number = 0;
 var score = 0;
 var time_left = 100;
+var timer;
 
 
 start_btn.addEventListener("click", function switch_to_quiz(){
     start_page_block.classList.replace("visible", "hidden")
     quiz_page_block.classList.replace("hidden", "visible")
-    /* start_btn.removeEventListener("click",switch_to_quiz) */
     start_timer();
     display_question()
 });
@@ -34,7 +39,7 @@ start_btn.addEventListener("click", function switch_to_quiz(){
 
 // timer
 function start_timer(){
-    var timer = setInterval(function(){
+    timer = setInterval(function(){
 
         time_element.innerHTML = time_left;
 
@@ -42,26 +47,22 @@ function start_timer(){
         
         if(time_left < 0){
             clearInterval(timer);
-            jump_to_finish_page();
+            quiz_page_block.classList.replace("visible","hidden")
+            result_page_block.classList.replace("hidden", "visible")
         }
     }, 1000);
 }
 
-
-
-function jump_to_finish_page(){
-    window.location.href = "finish_page.html";
-}
 
 function create_question(question_text,options) {
     /* assign value to question text */
     questions_text.textContent = question_text;
 
     /* assign value to options text */
-    option_1.textContent = options[0];
-    option_2.textContent = options[1]; 
-    option_3.textContent = options[2]; 
-    option_4.textContent = options[3];
+    option_1.textContent = "1." + options[0];
+    option_2.textContent = "2." + options[1]; 
+    option_3.textContent = "3." + options[2]; 
+    option_4.textContent = "4." + options[3];
 
 }
 
@@ -93,11 +94,10 @@ var display_question =function(){
 
     question_options_holder.addEventListener("click", function handle_option_click(event){
         
-
+        // if the answer is correct
         if(event.target.textContent == correct_answer){
-            console.log("correct answer")
-
-            // update accumulated number of corrected questions
+            
+            // update accumulated number of correct questions
             right_number ++;
             right_number_element.textContent = right_number;
             
@@ -111,8 +111,8 @@ var display_question =function(){
             
             
         }
-        else{
-            console.log("wrong answer")
+        else{//if answer is incorrect
+            // update accumulated number of incorrect questions
             wrong_number ++;
             wrong_number_element.textContent = wrong_number;
 
@@ -121,15 +121,13 @@ var display_question =function(){
             result_element.style.color = "red";
 
             // decrease the time due to wrong answer
-            if(time_left > 5){
-                time_left -= 5;
+            if(time_left > time_penality){
+                time_left -= time_penality;
             }
             else{
                 time_left = 0;
-                console.log("end of questions")
-
+                
             }
-
             
         }
         // remove the eventlistener since there will be another eventlisten to be added to the next question
@@ -137,17 +135,44 @@ var display_question =function(){
 
         question_index ++;
 
-        if(question_index < questions_data["multiple_question"].length){
+        // questions are enough questions_data["multiple_question"].length
+        if(question_index < 10){
             display_question();
 
         }
-        else{
-            console.log("end of questions")
+        else{// run out of questions
+            
+            quiz_page_block.classList.replace("visible","hidden");
+            result_page_block.classList.replace("hidden", "visible");
+            clearInterval(timer);
         }
 
     })
 
 }
+
+
+submit_btn.addEventListener("click", function(event){
+    event.preventDefault();
+    var initials = initials_holder.value.trim()
+    result_page_block.classList.replace("visible","hidden");
+    score_page_block.classList.replace("hidden", "visible");
+
+    const li = document.createElement("li");
+    li.textContent = `1. ${initials} - ${score}`;
+    score_list.appendChild(li);
+
+})
+
+go_back_btn.addEventListener("click", function(){
+    location.reload();
+})
+
+clear_btn.addEventListener("click", function(){
+    score_list.classList.replace("visible","hidden");
+})
+
+
 
 /* check if local storage has questions data */
 if(localStorage.getItem("question_data") == null){
