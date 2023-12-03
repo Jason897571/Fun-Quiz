@@ -1,4 +1,5 @@
 let start_btn = document.querySelector("#start_btn");
+let view_score = document.querySelector(".view_score");
 let start_page_block = document.querySelector(".start_page");
 let quiz_page_block = document.querySelector(".quiz_page");
 let result_page_block = document.querySelector(".result_page");
@@ -26,6 +27,18 @@ var wrong_number = 0;
 var score = 0;
 var time_left = 100;
 var timer;
+
+
+
+view_score.addEventListener("click", function (){
+    start_page_block.classList.replace("visible", "hidden")
+    quiz_page_block.classList.replace("visible","hidden");
+    result_page_block.classList.replace("visible","hidden");
+    score_page_block.classList.replace("hidden", "visible");
+    show_score_result();
+
+
+});
 
 
 start_btn.addEventListener("click", function switch_to_quiz(){
@@ -59,10 +72,10 @@ function create_question(question_text,options) {
     questions_text.textContent = question_text;
 
     /* assign value to options text */
-    option_1.textContent = "1." + options[0];
-    option_2.textContent = "2." + options[1]; 
-    option_3.textContent = "3." + options[2]; 
-    option_4.textContent = "4." + options[3];
+    option_1.textContent = options[0];
+    option_2.textContent = options[1]; 
+    option_3.textContent = options[2]; 
+    option_4.textContent = options[3];
 
 }
 
@@ -89,14 +102,13 @@ var display_question =function(){
     var options = single_question["options"];
     var correct_answer = single_question["correctAnswer"];
 
-
-    create_question(question_text, options, correct_answer);
+    create_question(question_text, options);
 
     question_options_holder.addEventListener("click", function handle_option_click(event){
         
         // if the answer is correct
         if(event.target.textContent == correct_answer){
-            
+           
             // update accumulated number of correct questions
             right_number ++;
             right_number_element.textContent = right_number;
@@ -151,6 +163,17 @@ var display_question =function(){
 
 }
 
+show_score_result = function(){
+    var score_rank = JSON.parse(localStorage.getItem("high_grade"))
+    
+    for(var i = 0; i < score_rank.length; i++){
+        const li = document.createElement("li");
+        li.textContent = score_rank[i].initials + " - " + score_rank[i].score;
+        score_list.appendChild(li);
+    }
+
+}
+
 
 submit_btn.addEventListener("click", function(event){
     event.preventDefault();
@@ -158,9 +181,22 @@ submit_btn.addEventListener("click", function(event){
     result_page_block.classList.replace("visible","hidden");
     score_page_block.classList.replace("hidden", "visible");
 
-    const li = document.createElement("li");
-    li.textContent = `1. ${initials} - ${score}`;
-    score_list.appendChild(li);
+    var new_initials_score = {"initials":initials,"score":score}
+    // get local data
+
+    var exist_data = localStorage.getItem("high_grade")
+
+    if(exist_data == null){
+        localStorage.setItem("high_grade",JSON.stringify([new_initials_score]))
+    }
+    else{
+        var data_array = JSON.parse(exist_data)
+        data_array.push(new_initials_score)
+        localStorage.setItem("high_grade", JSON.stringify(data_array))
+    }
+    
+    show_score_result();
+
 
 })
 
@@ -170,6 +206,7 @@ go_back_btn.addEventListener("click", function(){
 
 clear_btn.addEventListener("click", function(){
     score_list.classList.replace("visible","hidden");
+    localStorage.clear()
 })
 
 
