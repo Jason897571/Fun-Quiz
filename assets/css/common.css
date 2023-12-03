@@ -12,3 +12,7 @@
     background-color: purple;
     cursor: pointer;
 }
+
+.hidden{
+    display: none;
+}

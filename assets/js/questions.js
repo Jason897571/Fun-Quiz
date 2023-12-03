@@ -1,8 +1,14 @@
+let start_btn = document.querySelector("#start_btn");
+let start_page_block = document.querySelector(".start_page");
+let quiz_page_block = document.querySelector(".quiz_page");
+let result_page_block = document.querySelector(".result_page");
 let questions_text = document.querySelector(".question_text");
 let option_1 = document.querySelector(".option_1");
 let option_2 = document.querySelector(".option_2");
 let option_3 = document.querySelector(".option_3");
 let option_4 = document.querySelector(".option_4");
+
+
 let time_element = document.getElementById("timer_number");
 let right_number_element = document.querySelector("#correct");
 let wrong_number_element = document.querySelector("#wrong");
@@ -14,6 +20,16 @@ var right_number = 0;
 var wrong_number = 0;
 var score = 0;
 var time_left = 100;
+
+
+start_btn.addEventListener("click", function switch_to_quiz(){
+    start_page_block.classList.replace("visible", "hidden")
+    quiz_page_block.classList.replace("hidden", "visible")
+    /* start_btn.removeEventListener("click",switch_to_quiz) */
+    start_timer();
+    display_question()
+});
+
 
 
 // timer
@@ -133,15 +149,13 @@ var display_question =function(){
 
 }
 
-start_timer()
-
 /* check if local storage has questions data */
 if(localStorage.getItem("question_data") == null){
     get_json_data();
 }
 
 
-display_question()
+
 
 
 
