@@ -27,17 +27,18 @@ var question_index = 0;
 var right_number = 0;
 var wrong_number = 0;
 var score = 0;
-var time_left = 10000;
+var time_left = 300;
 var timer;
 
 
 
 view_score.addEventListener("click", function (){
-
+    /* if the initial is empty, poping up warning */
     if(quiz_page_block.classList.contains("visible")){
-        var is_gone = confirm("If you click 'Yes', you will lose all your quiz result. Are you sure you want to leave the quiz?");
+        var is_empty = confirm("If you click 'Yes', you will lose all your quiz result. Are you sure you want to leave the quiz?");
 
-        if(is_gone){
+        // initial is not empty
+        if(is_empty){
             start_page_block.classList.replace("visible", "hidden")
             quiz_page_block.classList.replace("visible","hidden");
             result_page_block.classList.replace("visible","hidden");
@@ -55,7 +56,7 @@ view_score.addEventListener("click", function (){
 
 });
 
-
+/* start button */
 start_btn.addEventListener("click", function switch_to_quiz(){
     start_page_block.classList.replace("visible", "hidden")
     quiz_page_block.classList.replace("hidden", "visible")
@@ -68,10 +69,17 @@ start_btn.addEventListener("click", function switch_to_quiz(){
 // timer
 function start_timer(){
     timer = setInterval(function(){
+        
+        var seconds = time_left%60;
+        var mins = Math.floor(time_left/60);
 
-        time_element.innerHTML = time_left;
+        time_element.innerHTML = mins + ":" + seconds;
 
         time_left--;
+
+        if(time_left < 60){
+            time_element.style.color = "red";
+        }
         
         if(time_left < 0){
             clearInterval(timer);
@@ -82,6 +90,7 @@ function start_timer(){
 }
 
 
+/* create each quesiton and answers */
 function create_question(question_text,options) {
     /* assign value to question text */
     questions_text.textContent = question_text;
@@ -178,6 +187,7 @@ var display_question =function(){
 
 }
 
+/* show the score for the current quiz */
 show_score_result = function(){
     var score_rank = JSON.parse(localStorage.getItem("high_grade"))
     // show final score
@@ -191,7 +201,7 @@ show_score_result = function(){
 
 }
 
-
+// submit initals and score for final rank
 submit_btn.addEventListener("click", function(event){
     event.preventDefault();
 
@@ -226,10 +236,12 @@ submit_btn.addEventListener("click", function(event){
 
 })
 
+// go back to main page
 go_back_btn.addEventListener("click", function(){
     location.reload();
 })
 
+// clear all the scores
 clear_btn.addEventListener("click", function(){
     score_list.classList.replace("visible","hidden");
     localStorage.clear()
