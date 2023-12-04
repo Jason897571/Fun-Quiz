@@ -62,9 +62,9 @@
 
         <footer>
             <div class="accumulated_score_container">
-                <p>Correct Answer Number &#9989;:<span id="correct">0</span></p>
-                <p>Wrong Answer Number &#x274C;:<span id="wrong">0</span></p>
-                <p>Total Scores:<span id="total_score">0</span></p>
+                <p>Correct Answer Number &#9989;: <span id="correct">0</span></p>
+                <p>Wrong Answer Number &#x274C;: <span id="wrong">0</span></p>
+                <p>Total Scores: <span id="total_score">0</span></p>
             </div>
         </footer>
     </div>
@@ -72,7 +72,7 @@
     <!-- finish page, result and initial -->
     <main class="result_page hidden">
         <h1>All Done!</h1>
-        <h2>Your Score is: <span id="total_score"></span></h2>
+        <h2>Your Score is: <span id="final_score"></span></h2>
         <form>
             <label for="initials">Enter your initials:</label>
             <input type="text" id="initials" placeholder="initials">
@@ -80,9 +80,10 @@
         </form>
     </main>
 
+    <!-- high_score_page -->
     <main class="score_page hidden">
         <h1>High Scores</h1>
-        <ul class="score_list visible"></ul>
+        <ol class="score_list visible"></ol>
 
         <form>
             <input type="button" id="go_back" value="Go Back">

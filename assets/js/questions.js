@@ -14,6 +14,7 @@ let wrong_number_element = document.querySelector("#wrong");
 let question_options_holder = document.querySelector(".question_options_holder");
 let score_element = document.querySelector("#total_score");
 let result_element = document.querySelector("#result");
+let final_score_element = document.querySelector("#final_score");
 let submit_btn = document.querySelector("#submit");
 let initials_holder = document.querySelector("#initials");
 let score_list = document.querySelector(".score_list");
@@ -25,7 +26,7 @@ var question_index = 0;
 var right_number = 0;
 var wrong_number = 0;
 var score = 0;
-var time_left = 100;
+var time_left = 10000;
 var timer;
 
 
@@ -147,8 +148,8 @@ var display_question =function(){
 
         question_index ++;
 
-        // questions are enough questions_data["multiple_question"].length
-        if(question_index < 10){
+        // questions are enough 
+        if(question_index < questions_data["multiple_question"].length){
             display_question();
 
         }
@@ -165,10 +166,12 @@ var display_question =function(){
 
 show_score_result = function(){
     var score_rank = JSON.parse(localStorage.getItem("high_grade"))
-    
+    // show final score
+    console.log(score);
+    final_score_element.textContent = score;
     for(var i = 0; i < score_rank.length; i++){
         const li = document.createElement("li");
-        li.textContent = score_rank[i].initials + " - " + score_rank[i].score;
+        li.textContent = `${i+1}` + ". " + score_rank[i].initials + " - " + score_rank[i].score;
         score_list.appendChild(li);
     }
 
@@ -180,7 +183,7 @@ submit_btn.addEventListener("click", function(event){
     var initials = initials_holder.value.trim()
     result_page_block.classList.replace("visible","hidden");
     score_page_block.classList.replace("hidden", "visible");
-
+    
     var new_initials_score = {"initials":initials,"score":score}
     // get local data
 
@@ -196,6 +199,7 @@ submit_btn.addEventListener("click", function(event){
     }
     
     show_score_result();
+    
 
 
 })
