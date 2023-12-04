@@ -31,8 +31,18 @@ var time_left = 300;
 var timer;
 
 view_score.addEventListener("click", function () {
-  /* if the initial is empty, poping up warning */
+  
+  //in the start page
+  if (start_page_block.classList.contains("visible")) {
+    start_page_block.classList.replace("visible", "hidden");
+    score_page_block.classList.replace("hidden", "visible");
+    show_score_result();
+  }
+
+
+  // during the quiz
   if (quiz_page_block.classList.contains("visible")) {
+    /* if the initial is empty, poping up warning */
     var is_empty = confirm(
       "If you click 'Yes', you will lose all your quiz result. Are you sure you want to leave the quiz?"
     );
@@ -62,8 +72,8 @@ start_btn.addEventListener("click", function switch_to_quiz() {
 // timer
 function start_timer() {
   timer = setInterval(function () {
-    var seconds = time_left % 60;
-    var mins = Math.floor(time_left / 60);
+    let seconds = time_left % 60;
+    let mins = Math.floor(time_left / 60);
 
     time_element.innerHTML = mins + ":" + seconds;
 
@@ -73,6 +83,7 @@ function start_timer() {
       time_element.style.color = "red";
     }
 
+    // when the time is up, show the result page
     if (time_left < 0) {
       clearInterval(timer);
       quiz_page_block.classList.replace("visible", "hidden");
@@ -112,10 +123,10 @@ var get_json_data = function () {
 var display_question = function () {
   let questions_data = localStorage.getItem("question_data");
   questions_data = JSON.parse(questions_data);
-  var single_question = questions_data["multiple_question"][question_index];
-  var question_text = single_question["question"];
-  var options = single_question["options"];
-  var correct_answer = single_question["correctAnswer"];
+  let single_question = questions_data["multiple_question"][question_index];
+  let question_text = single_question["question"];
+  let options = single_question["options"];
+  let correct_answer = single_question["correctAnswer"];
 
   create_question(question_text, options);
 
