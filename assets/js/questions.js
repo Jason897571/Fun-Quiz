@@ -179,13 +179,14 @@ const data = {
   ]
 }
 
-view_score.addEventListener("click", function () {
+view_score.addEventListener("click", function show_score () {
   
   //in the start page
   if (start_page_block.classList.contains("visible")) {
     start_page_block.classList.replace("visible", "hidden");
     score_page_block.classList.replace("hidden", "visible");
     show_score_result();
+    removeEventListener("click",show_score)
   }
 
 
@@ -204,6 +205,7 @@ view_score.addEventListener("click", function () {
       header_block.classList.replace("visible", "hidden");
       score_page_block.classList.replace("hidden", "visible");
       show_score_result();
+      removeEventListener("click",show_score)
     } else {
       return;
     }
