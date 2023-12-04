@@ -1,3 +1,4 @@
+let header_block = document.querySelector(".header");
 let start_btn = document.querySelector("#start_btn");
 let view_score = document.querySelector(".view_score");
 let start_page_block = document.querySelector(".start_page");
@@ -32,11 +33,24 @@ var timer;
 
 
 view_score.addEventListener("click", function (){
-    start_page_block.classList.replace("visible", "hidden")
-    quiz_page_block.classList.replace("visible","hidden");
-    result_page_block.classList.replace("visible","hidden");
-    score_page_block.classList.replace("hidden", "visible");
-    show_score_result();
+
+    if(quiz_page_block.classList.contains("visible")){
+        var is_gone = confirm("If you click 'Yes', you will lose all your quiz result. Are you sure you want to leave the quiz?");
+
+        if(is_gone){
+            start_page_block.classList.replace("visible", "hidden")
+            quiz_page_block.classList.replace("visible","hidden");
+            result_page_block.classList.replace("visible","hidden");
+            header_block.classList.replace("visible","hidden");
+            score_page_block.classList.replace("hidden", "visible");
+            show_score_result();
+        }
+        else{
+            return
+        }
+
+    }
+
 
 
 });
@@ -180,25 +194,33 @@ show_score_result = function(){
 
 submit_btn.addEventListener("click", function(event){
     event.preventDefault();
-    var initials = initials_holder.value.trim()
-    result_page_block.classList.replace("visible","hidden");
-    score_page_block.classList.replace("hidden", "visible");
-    
-    var new_initials_score = {"initials":initials,"score":score}
-    // get local data
 
-    var exist_data = localStorage.getItem("high_grade")
-
-    if(exist_data == null){
-        localStorage.setItem("high_grade",JSON.stringify([new_initials_score]))
-    }
-    else{
-        var data_array = JSON.parse(exist_data)
-        data_array.push(new_initials_score)
-        localStorage.setItem("high_grade", JSON.stringify(data_array))
-    }
+    if(initials_holder.value == ""){
+        confirm("You initial cannot be empty!");
+        return;
+    }else{
+        var initials = initials_holder.value.trim()
+        result_page_block.classList.replace("visible","hidden");
+        score_page_block.classList.replace("hidden", "visible");
+        header_block.classList.replace("visible","hidden");
+        
+        var new_initials_score = {"initials":initials,"score":score}
+        // get local data
     
-    show_score_result();
+        var exist_data = localStorage.getItem("high_grade")
+    
+        if(exist_data == null){
+            localStorage.setItem("high_grade",JSON.stringify([new_initials_score]))
+        }
+        else{
+            var data_array = JSON.parse(exist_data)
+            data_array.push(new_initials_score)
+            localStorage.setItem("high_grade", JSON.stringify(data_array))
+        }
+        
+        show_score_result();
+    }
+
     
 
 
