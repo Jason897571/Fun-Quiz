@@ -42,6 +42,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#future_additions">Future Additions</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ol>
 </details>
 
@@ -135,6 +136,15 @@ For more details, please refer to the [Documentation](https://github.com/Jason89
 Jason Gu - [Email](king.gs1314@outlook.com) - king.gs1314@outlook.com
 
 Project Link: [https://github.com/Jason897571/Fun-Quiz](https://github.com/Jason897571/Fun-Quiz)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="reference"></a>
+## Reference
+* Xpert Assistant/ChatGPT
+* https://dev.to/envoy_/150-badges-for-github-pnk#games
+* https://github.com/othneildrew/Best-README-Template
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
