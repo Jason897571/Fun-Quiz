@@ -328,7 +328,7 @@ var display_question = function () {
 show_score_result = function () {
   var score_rank = JSON.parse(localStorage.getItem("high_grade"));
   // show final score
-  console.log(score);
+  
   final_score_element.textContent = score;
   for (var i = 0; i < score_rank.length; i++) {
     const li = document.createElement("li");
