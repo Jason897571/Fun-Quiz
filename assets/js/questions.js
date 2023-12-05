@@ -212,14 +212,18 @@ view_score.addEventListener("click", function show_score () {
   }
 });
 
-/* start button */
-start_btn.addEventListener("click", function switch_to_quiz() {
+
+// switch page from start to quiz
+var switch_to_quiz = function(){
   start_page_block.classList.replace("visible", "hidden");
   quiz_page_block.classList.replace("hidden", "visible");
   start_timer();
   display_question();
   removeEventListener("click",switch_to_quiz)
-});
+}
+
+/* start button */
+start_btn.addEventListener("click", switch_to_quiz);
 
 // timer
 function start_timer() {
@@ -335,7 +339,7 @@ show_score_result = function () {
 };
 
 // submit initals and score for final rank
-submit_btn.addEventListener("click", function submit_score (event) {
+var submit_score = function (event) {
   event.preventDefault();
 
   if (initials_holder.value == "") {
@@ -363,7 +367,10 @@ submit_btn.addEventListener("click", function submit_score (event) {
     show_score_result();
     removeEventListener("click", submit_score);
   }
-});
+}
+
+
+submit_btn.addEventListener("click", submit_score);
 
 // go back to main page
 go_back_btn.addEventListener("click", function go_back () {
